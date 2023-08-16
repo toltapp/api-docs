@@ -38,7 +38,7 @@
     },
     {
       "group": "Referrals",
-      "pages": ["endpoint/create"]
+      "pages": ["referrals/create"]
     },
     {
       "group": "Rewards",
