@@ -30,10 +30,10 @@ description: "This endpoint creates a new reward for an existing referral"
 <RequestExample>
 
 ```bash Example Request
-curl --location 'https://api.tolt.io/private/v1/reward' \
---header 'Authorization: <API_ID>' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl -X POST 'https://api.tolt.io/private/v1/reward' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
     "email": "some@email.com",
     "amount": 99,
     "platform": "stripe"

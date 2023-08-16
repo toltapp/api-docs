@@ -28,10 +28,10 @@ description: "This endpoint creates a new referral for an affiliate"
 <RequestExample>
 
 ```bash cURL
-curl --location 'https://api.tolt.io/private/v1/referrals' \
---header 'Authorization: <API_ID>' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl -x POST 'https://api.tolt.io/private/v1/referrals' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
     "email": "test@gmail.com",
     "plan": "Starter",
     "affiliate": "affiliate@gmail.com",
