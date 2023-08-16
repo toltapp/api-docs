@@ -9,12 +9,12 @@ description: "This endpoint creates a new reward for an existing referral"
 <br />
 ### Body
 
-<ParamField body="id*" type="string">
-  The ID that is assigned to the referral. Optional if email is present.
+<ParamField body="referralId*" type="string">
+  The ID that is assigned to the referral. **Optional if email is present**.
 </ParamField>
 
-<ParamField body="email*" type="string">
-  The email that is assigned to the referral. Optional if id is present.
+<ParamField body="referralEmail*" type="string">
+  The email that is assigned to the referral. **Optional if id is present**.
 </ParamField>
 
 <ParamField body="amount*" type="number">
