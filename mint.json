@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "API References",
   "logo": {
     "dark": "/logo/light.svg",
     "light": "/logo/dark.svg"
@@ -53,6 +53,5 @@
     "playground": {
       "mode": "simple"
     }
-  },
-  "openapi": "https://api.mintlify.com/api/user"
+  }
 }
