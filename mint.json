@@ -38,11 +38,11 @@
     },
     {
       "group": "Referrals",
-      "pages": ["referrals/create"]
+      "pages": ["referrals/create", "referrals/cancel"]
     },
     {
       "group": "Rewards",
-      "pages": ["rewards/create"]
+      "pages": ["rewards/create", "rewards/refund"]
     }
   ],
   "footerSocials": {
