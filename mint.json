@@ -37,6 +37,10 @@
       "pages": ["authentication"]
     },
     {
+      "group": "Affiliates",
+      "pages": ["affiliates/create"]
+    },
+    {
       "group": "Referrals",
       "pages": ["referrals/create", "referrals/cancel"]
     },
