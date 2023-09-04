@@ -1,0 +1,79 @@
+---
+title: "Create Affiliate"
+api: "POST https://api.tolt.io/private/v1/affiliates"
+description: "This endpoint creates a new affiliate for your program."
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Body
+
+<ParamField body="firstName*" type="string">
+  The affiliate first name.
+</ParamField>
+
+<ParamField body="lastName*" type="string">
+  The affiliate last name.
+</ParamField>
+
+<ParamField body="email*" type="string">
+  The affiliate email address.
+</ParamField>
+
+<ParamField body="payoutMethod*" type="string">
+  The affiliate payout method. (paypal, wise)
+</ParamField>
+
+<ParamField body="payoutEmail*" type="string">
+  The affiliate payout email address.
+</ParamField>
+
+<ParamField body="param*" type="string">
+  The URL parameter for the affiliate. (ref, aff, via)
+</ParamField>
+
+<ParamField body="url*" type="string">
+  The URL parameter value for the affiliate.
+</ParamField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST 'https://api.tolt.io/private/v1/affiliates' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "firstName": "AffName",
+    "lastName": "AFffLName",
+    "email": "somemail@gmail.com",
+    "programId": "8ebb4425-bdca-409c-b345-812a5t4111c",
+    "param": "via",
+    "url": "someurl",
+    "payoutMethod": "wise",
+    "payoutEmail": "somemail@gmail.com"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Example Response
+{
+    "id": "ae85655d-0001-41e6-b407-8901b135a854",
+    "firstName": "AffName",
+    "lastName": "AFffLName",
+    "email": "somemail@gmail.com",
+    "payoutEmail": "somemail@gmail.com",
+    "payoutMethod": "wise",
+    "programId": "8ebb4425-bdca-409c-b345-812a5t4111c",
+    "link": {
+        "id": "86d50816-7bbe-4a4c-8d15-03c466cc580d",
+        "param": "via",
+        "url": "someurl"
+    }
+}
+```
+
+</ResponseExample>
