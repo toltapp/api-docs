@@ -38,7 +38,7 @@
     },
     {
       "group": "Affiliates",
-      "pages": ["affiliates/create"]
+      "pages": ["affiliates/retrieve", "affiliates/create"]
     },
     {
       "group": "Referrals",

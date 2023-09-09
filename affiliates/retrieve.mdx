@@ -1,0 +1,67 @@
+---
+title: "Retrieve Affiliate"
+api: "GET https://api.tolt.io/private/v1/affiliates"
+description: "This endpoint retrieves an affiliate by ID or URL prameters."
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Query Parameters
+
+<ParamField body="id*" type="string - optional if using param">
+  The affiliate ID.
+</ParamField>
+
+<ParamField body="param*" type="string - optional if using id">
+  The URL parameter for the affiliate. (ref, aff, via)
+</ParamField>
+
+<ParamField body="value*" type="string - optional if using id">
+  The URL parameter value for the affiliate.
+</ParamField>
+
+<ParamField body="programId*" type="string">
+  The program ID.
+</ParamField>
+
+<RequestExample>
+
+```bash cURL - ID
+curl -X GET 'https://api.tolt.io/private/v1/affiliates?id=edeb3065-2a34-44t2-aaa8-e09053a90140&programId=8ebb4425-atc1-409c-b345-80205d44681c' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+```bash cURL - PARAM
+curl -X GET 'https://api.tolt.io/private/v1/affiliates?param=ref&value=testing&programId=8ebb4425-atc1-409c-b345-80205d44681c' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Example Response
+{
+    "id": "edeb3065-2a34-44t2-aaa8-e09053a90140",
+    "firstName": "Testing",
+    "lastName": "Tolt",
+    "email": "testtolt@gmail.com",
+    "payoutEmail": "test@tolt.io",
+    "payoutMethod": "wise",
+    "programId": "8ebb4425-atc1-409c-b345-80205d44681c",
+    "links": [
+        {
+            "id": "4be5236a-62d1-402f-9a45-b9cc51e8bce5",
+            "param": "ref",
+            "url": "testing"
+        }
+    ]
+}
+```
+
+</ResponseExample>
