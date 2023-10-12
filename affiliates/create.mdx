@@ -37,9 +37,28 @@ description: "This endpoint creates a new affiliate for your program."
   The URL parameter value for the affiliate.
 </ParamField>
 
+<ParamField body="promoCode" type="object - optional">
+  The promo code to be assigned to the affiliate.
+  <Expandable title="properties" defaultOpen="true">
+    <ParamField body="active*" type="boolean">
+      The promo code status.
+    </ParamField>
+    <ParamField body="code*" type="string">
+      The promo code.
+    </ParamField>
+    <ParamField body="value*" type="number">
+      The promo code value. i.e 15
+    </ParamField>
+    <ParamField body="type*" type="string - fixed or percentage">
+      The promo code type, <strong>fixed</strong> or <strong>percentage</strong>
+      .
+    </ParamField>
+  </Expandable>
+</ParamField>
+
 <RequestExample>
 
-```bash cURL
+```bash cURL - Without Promo Code
 curl -X POST 'https://api.tolt.io/private/v1/affiliates' \
 -H 'Authorization: <API_ID>' \
 -H 'Content-Type: application/json' \
@@ -52,6 +71,28 @@ curl -X POST 'https://api.tolt.io/private/v1/affiliates' \
     "url": "someurl",
     "payoutMethod": "wise",
     "payoutEmail": "somemail@gmail.com"
+}'
+```
+
+```bash cURL - With Promo Code
+curl -X POST 'https://api.tolt.io/private/v1/affiliates' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "firstName": "AffName",
+    "lastName": "AFffLName",
+    "email": "somemail@gmail.com",
+    "programId": "8ebb4425-bdca-409c-b345-812a5t4111c",
+    "param": "via",
+    "url": "someurl",
+    "payoutMethod": "wise",
+    "payoutEmail": "somemail@gmail.com",
+    "promoCode": {
+        "active": true,
+        "code": "SOMECODE",
+        "value": 15,
+        "type": "percentage"
+    }
 }'
 ```
 
