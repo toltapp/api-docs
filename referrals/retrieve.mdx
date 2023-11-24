@@ -1,0 +1,56 @@
+---
+title: "Retrieve Referral"
+api: "GET https://api.tolt.io/private/v1/referrals"
+description: "This endpoint retrieves an referral by ID or Email address."
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Query Parameters
+
+<ParamField body="id*" type="string - optional if using email">
+  The referral ID.
+</ParamField>
+
+<ParamField body="email*" type="string - optional if using id">
+  The referral email.
+</ParamField>
+
+<ParamField body="programId*" type="string">
+  The program ID.
+</ParamField>
+
+<RequestExample>
+
+```bash cURL - ID
+curl -X GET 'https://api.tolt.io/private/v1/referrals?id=3f4fca43-8172-4966-a42a-9fb31c94b75d&programId=8ebb4425-atc1-409c-b345-80205d44681c' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+```bash cURL - EMAIL
+curl -X GET 'https://api.tolt.io/private/v1/referrals?email=referral@email.com&programId=8ebb4425-atc1-409c-b345-80205d44681c' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Example Response
+{
+    "id": "3f4fca43-8172-4966-a42a-9fb31c94b75d",
+    "email": "referral@email.com",
+    "plan": "Starter",
+    "status": "active",
+    "programId": "9c9a0a71-7fde-4387-aed6-ff7d6862a3ef",
+    "affiliateId": "d70c57ab-b949-4e10-1cb6-ce0b19fa3556",
+    "createdAt": "2023-11-24T10:24:20.373Z"
+}
+```
+
+</ResponseExample>
