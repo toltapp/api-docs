@@ -9,7 +9,7 @@ description: "This endpoint creates a new referral for an affiliate"
 <br />
 ### Body
 
-<ParamField body="email*" type="string">
+<ParamField body="email*" type="string" required>
   The referral email address.
 </ParamField>
 
@@ -17,12 +17,16 @@ description: "This endpoint creates a new referral for an affiliate"
   The referral plan name.
 </ParamField>
 
-<ParamField body="affiliate*" type="string">
+<ParamField body="affiliate*" type="string" required>
   affiliate email address or affiliate id.
 </ParamField>
 
-<ParamField body="programId*" type="string">
+<ParamField body="programId*" type="string" required>
   The program id.
+</ParamField>
+
+<ParamField body="status" type="string - optional" default="active">
+  The referral status: <strong>active or lead</strong>
 </ParamField>
 
 <RequestExample>

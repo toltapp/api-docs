@@ -42,7 +42,7 @@
     },
     {
       "group": "Referrals",
-      "pages": ["referrals/create", "referrals/cancel"]
+      "pages": ["referrals/retrieve", "referrals/create", "referrals/cancel"]
     },
     {
       "group": "Rewards",
