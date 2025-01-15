@@ -4,24 +4,23 @@ api: "PUT https://api.tolt.io/private/v1/referrals/cancel"
 description: "This endpoint changes the status of a referral to canceled."
 ---
 
-## Base URL `https://api.tolt.io`
+## Base URL [`https://api.tolt.io`](https://api.tolt.io)
 
 <br />
+
 ### Body
 
 <ParamField body="referral*" type="string">
-  The referral email address or referral ID.
+  The referral email address or referral ID.&#x20;
 </ParamField>
 
 <RequestExample>
-
-```bash cURL
-curl -X PUT 'https://api.tolt.io/private/v1/referrals/cancel' \
--H 'Authorization: <API_ID>' \
--H 'Content-Type: application/json' \
--d '{
-    "referral": "test@gmail.com",
-}'
-```
-
+  ```bash cURL
+  curl -X PUT 'https://api.tolt.io/private/v1/referrals/cancel' \
+  -H 'Authorization: <API_ID>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+      "referral": "test@gmail.com",
+  }'
+  ```
 </RequestExample>
