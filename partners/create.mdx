@@ -47,10 +47,6 @@ description: "This endpoint creates a partner."
   details)
 </ParamField>
 
-<ParamField body="status" type="string - optional">
-  Initial status of the partner. Valid values are: 'active', 'inactive'
-</ParamField>
-
 ### Response
 
 <ResponseField name="success" type="boolean">
@@ -94,9 +90,6 @@ description: "This endpoint creates a partner."
     </ResponseField>
     <ResponseField name="created_at" type="string">
       ISO 8601 timestamp of creation
-    </ResponseField>
-    <ResponseField name="status" type="string">
-      Partner's status
     </ResponseField>
   </Expandable>
 </ResponseField>
