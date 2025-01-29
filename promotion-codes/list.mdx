@@ -1,10 +1,10 @@
 ---
 title: "List Promotion Codes"
-api: "GET https://dev-api-v.tolt.io/v1/promotion-codes"
+api: "GET https://api.tolt.com/v1/promotion-codes"
 description: "This endpoint lists all promotion codes."
 ---
 
-## Base URL `https://dev-api-v.tolt.io`
+## Base URL `https://api.tolt.com`
 
 <br />
 ### Query Parameters
@@ -95,12 +95,12 @@ description: "This endpoint lists all promotion codes."
 <RequestExample>
 
 ```bash cURL
-curl -X GET 'https://dev-api-v.tolt.io/v1/promotion-codes' \
+curl -X GET 'https://api.tolt.com/v1/promotion-codes' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 
 ```bash With Expand
-curl -X GET 'https://dev-api-v.tolt.io/v1/promotion-codes?expand[]=partner&expand[]=program' \
+curl -X GET 'https://api.tolt.com/v1/promotion-codes?expand[]=partner&expand[]=program' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 

@@ -1,10 +1,10 @@
 ---
 title: "Retrieve Commission"
-api: "GET https://dev-api-v.tolt.io/v1/commissions/:id"
+api: "GET https://api.tolt.com/v1/commissions/:id"
 description: "This endpoint retrieves a commission."
 ---
 
-## Base URL `https://dev-api-v.tolt.io`
+## Base URL `https://api.tolt.com`
 
 <br />
 ### Query Parameters
@@ -62,12 +62,12 @@ description: "This endpoint retrieves a commission."
 <RequestExample>
 
 ```bash cURL
-curl -X GET 'https://dev-api-v.tolt.io/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW' \
+curl -X GET 'https://api.tolt.com/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 
 ```bash With Expand
-curl -X GET 'https://dev-api-v.tolt.io/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program&expand[]=customer' \
+curl -X GET 'https://api.tolt.com/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program&expand[]=customer' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 

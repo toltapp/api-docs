@@ -1,10 +1,10 @@
 ---
 title: "Create Click"
-api: "POST https://dev-api-v.tolt.io/v1/clicks"
+api: "POST https://api.tolt.com/v1/clicks"
 description: "This endpoint creates a click. You can create a click either by providing partner and link IDs or by using a tracking parameter and value."
 ---
 
-## Base URL `https://dev-api-v.tolt.io`
+## Base URL `https://api.tolt.com`
 
 <br />
 ### Body Parameters
@@ -93,7 +93,7 @@ You can create a click using one of these two methods:
 <RequestExample>
 
 ```bash Method 1: Partner ID
-curl -X POST 'https://dev-api-v.tolt.io/v1/clicks' \
+curl -X POST 'https://api.tolt.com/v1/clicks' \
 -H 'Authorization: Bearer <API_KEY>' \
 -H 'Content-Type: application/json' \
 -d '{
@@ -107,7 +107,7 @@ curl -X POST 'https://dev-api-v.tolt.io/v1/clicks' \
 ```
 
 ```bash Method 2: Tracking Parameter
-curl -X POST 'https://dev-api-v.tolt.io/v1/clicks' \
+curl -X POST 'https://api.tolt.com/v1/clicks' \
 -H 'Authorization: Bearer <API_KEY>' \
 -H 'Content-Type: application/json' \
 -d '{

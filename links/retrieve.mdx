@@ -1,10 +1,10 @@
 ---
 title: "Retrieve Link"
-api: "GET https://dev-api-v.tolt.io/v1/links/:id"
+api: "GET https://api.tolt.com/v1/links/:id"
 description: "This endpoint retrieves a tracking link by its ID."
 ---
 
-## Base URL `https://dev-api-v.tolt.io`
+## Base URL `https://api.tolt.com`
 
 <br />
 ### Query Parameters
@@ -50,12 +50,12 @@ description: "This endpoint retrieves a tracking link by its ID."
 <RequestExample>
 
 ```bash cURL
-curl -X GET 'https://dev-api-v.tolt.io/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW' \
+curl -X GET 'https://api.tolt.com/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 
 ```bash With Expand
-curl -X GET 'https://dev-api-v.tolt.io/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program' \
+curl -X GET 'https://api.tolt.com/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program' \
 -H 'Authorization: Bearer <API_KEY>'
 ```
 
