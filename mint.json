@@ -38,11 +38,7 @@
   "navigation": [
     {
       "group": "",
-      "pages": [
-        "introduction/introduction",
-        "introduction/authentication",
-        "introduction/rate-limit"
-      ]
+      "pages": ["introduction", "authentication", "rate-limit"]
     },
     {
       "group": "Partners",
