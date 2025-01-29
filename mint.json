@@ -35,6 +35,9 @@
     "name": "API Reference"
   },
   "theme": "prism",
+  "integrations": {
+    "intercom": "satkmf6i"
+  },
   "navigation": [
     {
       "group": "",
