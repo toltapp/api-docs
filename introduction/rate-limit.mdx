@@ -1,0 +1,53 @@
+---
+title: "Rate Limits"
+description: "Understanding Tolt API rate limits"
+---
+
+## Overview
+
+The Tolt API implements rate limiting to ensure stability and fair usage across all users. Rate limits are applied on a per-API key basis.
+
+## Current Limits
+
+<Card title="Rate Limits">
+  **25 requests per second**
+
+</Card>
+
+## Rate Limit Response
+
+When you exceed the rate limit, the API will return a `429 Too Many Requests` response with the following JSON body:
+
+```json
+{
+  "success": false,
+  "error": {
+    "message": "Too many requests. Please try again.",
+    "type": "rate_limit_error"
+  }
+}
+```
+
+## Best Practices
+
+To work effectively within these limits:
+
+1. **Implement Retries**
+
+   - Use exponential backoff when you receive a 429 response
+   - Wait for the duration specified in the error message before retrying
+
+2. **Monitor Usage**
+
+   - Track the rate limit headers in your responses
+   - Set up alerts when you're approaching limits
+   - Consider implementing your own request throttling
+
+3. **Optimize Requests**
+   - Batch operations when possible
+   - Cache responses when appropriate
+   - Use webhook notifications instead of polling
+
+## Need Higher Limits?
+
+If you require higher rate limits for your use case, please contact our support team at support@tolt.io.

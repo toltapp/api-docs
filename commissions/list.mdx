@@ -1,0 +1,207 @@
+---
+title: "List Commissions"
+api: "GET https://dev-api-v.tolt.io/v1/commissions"
+description: "This endpoint lists all commissions."
+---
+
+## Base URL `https://dev-api-v.tolt.io`
+
+<br />
+### Query Parameters
+
+<ParamField body="program_id*" type="string">
+  The program ID from where you want to list the commissions
+</ParamField>
+
+<ParamField body="partner_id" type="string - optional">
+  Only return commissions from this partner
+</ParamField>
+
+<ParamField body="customer_id" type="string - optional">
+  Only return commissions for this customer
+</ParamField>
+
+<ParamField body="transaction_id" type="string - optional">
+  Only return commissions for this transaction
+</ParamField>
+
+<ParamField body="order" type="asc | desc - optional">
+  The order of the commissions to return by created_at. Default is desc
+</ParamField>
+
+<ParamField body="expand" type="array - optional">
+  Specify which related objects to include in the response. Valid values are
+  **'partner'**, **'program'**, **'customer'**, and **'transaction'**. Use
+  **expand[]=partner**, **expand[]=program**, **expand[]=customer**, or
+  **expand[]=transaction** to include the related objects.
+</ParamField>
+
+<ParamField body="created_gte" type="string - optional">
+  Only return commissions created after this date
+</ParamField>
+
+<ParamField body="created_lte" type="string - optional">
+  Only return commissions created before this date
+</ParamField>
+
+<ParamField body="limit" type="string - optional">
+  A limit on the number of commissions to return. Default is 10, max is 100
+</ParamField>
+
+<ParamField body="starting_after" type="string - optional">
+  A cursor for use in pagination. starting_after is an object ID that defines
+  your place in the list
+</ParamField>
+
+<ParamField body="ending_before" type="string - optional">
+  A cursor for use in pagination. ending_before is an object ID that defines
+  your place in the list
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="has_more" type="boolean">
+  Whether there are more pages of results available
+</ResponseField>
+
+<ResponseField name="total_count" type="integer">
+  Total number of commissions matching the query
+</ResponseField>
+
+<ResponseField name="data" type="array[Object]">
+  <Expandable title="properties" defaultOpen={false}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the commission
+    </ResponseField>
+    <ResponseField name="amount" type="number">
+      Commission amount in cents
+    </ResponseField>
+    <ResponseField name="customer_id" type="string">
+      ID of the associated customer
+    </ResponseField>
+    <ResponseField name="transaction_id" type="string">
+      Associated transaction identifier
+    </ResponseField>
+    <ResponseField name="charge_id" type="string">
+      Associated charge identifier
+    </ResponseField>
+    <ResponseField name="source" type="string">
+      Source of the commission
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Commission status
+    </ResponseField>
+    <ResponseField name="revenue" type="number">
+      Revenue amount in cents
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the commission belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X GET 'https://dev-api-v.tolt.io/v1/commissions?program_id=prg_YRsbPDAKhWfdqJbFACheh' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+```bash With Expand
+curl -X GET 'https://dev-api-v.tolt.io/v1/commissions?program_id=prg_YRsbPDAKhWfdqJbFACheh&expand[]=partner&expand[]=program&expand[]=customer&expand[]=transaction' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "has_more": true,
+  "total_count": 45,
+  "data": [
+    {
+      "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+      "amount": 1999,
+      "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+      "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+      "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+      "source": "stripe",
+      "status": "pending",
+      "revenue": 9999,
+      "created_at": "2025-01-15T14:30:00.000Z",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+    }
+  ]
+}
+```
+
+```json Expand Response
+{
+  "success": true,
+  "has_more": true,
+  "total_count": 45,
+  "data": [
+    {
+      "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+      "amount": 1999,
+      "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+      "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+      "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+      "source": "stripe",
+      "status": "pending",
+      "revenue": 9999,
+      "created_at": "2025-01-15T14:30:00.000Z",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+      "partner": {
+        "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+        "first_name": "Michael",
+        "last_name": "Scott",
+        "email": "michael.scott@dundermifflin.com",
+        "company_name": "Dunder Mifflin",
+        "status": "active",
+        "created_at": "2025-01-13T10:06:11.251Z"
+      },
+      "program": {
+        "id": "prg_YRsbPDAKhWfdqJbFACheh",
+        "status": "active",
+        "name": "Tolt's Partnership Program",
+        "product_name": "Tolt",
+        "subdomain": "affiliates",
+        "type": "public",
+        "currency_code": "USD",
+        "created_at": "2024-03-05T10:28:08.984+00:00"
+      },
+      "customer": {
+        "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+        "identifier": "cust_123",
+        "name": "Jim Halpert",
+        "status": "active",
+        "created_at": "2025-01-15T14:30:00.000Z"
+      },
+      "transaction": {
+        "id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+        "amount": 9999,
+        "status": "completed",
+        "created_at": "2025-01-15T14:30:00.000Z"
+      }
+    }
+  ]
+}
+```
+
+</ResponseExample>

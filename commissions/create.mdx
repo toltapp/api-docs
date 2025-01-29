@@ -1,0 +1,129 @@
+---
+title: "Create Commission"
+api: "POST https://dev-api-v.tolt.io/v1/commissions"
+description: "This endpoint creates a commission."
+---
+
+## Base URL `https://dev-api-v.tolt.io`
+
+<br />
+### Body Parameters
+
+<ParamField body="amount*" type="number">
+  The commission amount in cents
+</ParamField>
+
+<ParamField body="customer_id*" type="string">
+  The ID of the customer associated with this commission
+</ParamField>
+
+<ParamField body="transaction_id" type="string - optional">
+  Associated transaction identifier
+</ParamField>
+
+<ParamField body="charge_id" type="string - optional">
+  Associated charge identifier
+</ParamField>
+
+<ParamField body="source" type="string - optional">
+  Source of the commission
+</ParamField>
+
+<ParamField body="status" type="string - optional">
+  Commission status. Valid values are: 'pending', 'approved', 'paid', 'rejected'
+</ParamField>
+
+<ParamField body="revenue" type="number - optional">
+  The revenue amount in cents
+</ParamField>
+
+<ParamField body="created_at" type="string - optional">
+  ISO 8601 timestamp of when the commission was created
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the commission, prefixed with `comm_`
+    </ResponseField>
+    <ResponseField name="amount" type="number">
+      Commission amount in cents
+    </ResponseField>
+    <ResponseField name="customer_id" type="string">
+      ID of the associated customer
+    </ResponseField>
+    <ResponseField name="transaction_id" type="string">
+      Associated transaction identifier
+    </ResponseField>
+    <ResponseField name="charge_id" type="string">
+      Associated charge identifier
+    </ResponseField>
+    <ResponseField name="source" type="string">
+      Source of the commission
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Commission status
+    </ResponseField>
+    <ResponseField name="revenue" type="number">
+      Revenue amount in cents
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the commission belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST 'https://dev-api-v.tolt.io/v1/commissions' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "amount": 1999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "source": "stripe",
+    "status": "pending",
+    "revenue": 9999,
+    "created_at": "2025-01-15T14:30:00.000Z"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+    "amount": 1999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "source": "stripe",
+    "status": "pending",
+    "revenue": 9999,
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+</ResponseExample>
