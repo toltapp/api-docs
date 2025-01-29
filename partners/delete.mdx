@@ -1,0 +1,51 @@
+---
+title: "Delete Partner"
+api: "DELETE https://dev-api-v.tolt.io/v1/partners/:id"
+description: "This endpoint deletes a partner."
+---
+
+## Base URL `https://dev-api-v.tolt.io`
+
+<br />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the deleted partner, `uuid` or prefixed with `part_`
+    </ResponseField>
+    <ResponseField name="deleted" type="boolean">
+      Indicates that the partner was deleted
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X DELETE 'https://dev-api-v.tolt.io/v1/partners/part_s7mbzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "deleted": true
+  }
+}
+```
+
+</ResponseExample>

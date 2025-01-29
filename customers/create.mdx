@@ -1,0 +1,145 @@
+---
+title: "Create Customer"
+api: "POST https://dev-api-v.tolt.io/v1/customers"
+description: "This endpoint creates a customer."
+---
+
+## Base URL `https://dev-api-v.tolt.io`
+
+<br />
+### Body Parameters
+
+<ParamField body="email*" type="string">
+  Customer's email address
+</ParamField>
+
+<ParamField body="partner_id*" type="string">
+  The partner ID who referred this customer
+</ParamField>
+
+<ParamField body="name" type="string - optional">
+  Customer's name
+</ParamField>
+
+<ParamField body="subscription_id" type="string - optional">
+  Associated subscription identifier
+</ParamField>
+
+<ParamField body="customer_id" type="string - optional">
+  Your internal customer identifier
+</ParamField>
+
+<ParamField body="click_id" type="string - optional">
+  Tracking click identifier
+</ParamField>
+
+<ParamField body="created_at" type="string - optional">
+  ISO 8601 timestamp of when the customer was created
+</ParamField>
+
+<ParamField body="lead_at" type="string - optional">
+  ISO 8601 timestamp of when the customer became a lead
+</ParamField>
+
+<ParamField body="active_at" type="string - optional">
+  ISO 8601 timestamp of when the customer became active
+</ParamField>
+
+<ParamField body="status" type="string - optional">
+  Customer's status. Valid values are: 'lead', 'trialing', 'active', 'canceled'
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the customer, `uuid` or prefixed with `cust_`
+    </ResponseField>
+    <ResponseField name="identifier" type="string">
+      Your unique identifier for the customer
+    </ResponseField>
+    <ResponseField name="partner_id" type="string">
+      ID of the referring partner
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Customer's name
+    </ResponseField>
+    <ResponseField name="subscription_id" type="string">
+      Associated subscription identifier
+    </ResponseField>
+    <ResponseField name="customer_id" type="string">
+      Your internal customer identifier
+    </ResponseField>
+    <ResponseField name="click_id" type="string">
+      Tracking click identifier
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="lead_at" type="string">
+      ISO 8601 timestamp of lead conversion
+    </ResponseField>
+    <ResponseField name="active_at" type="string">
+      ISO 8601 timestamp of activation
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Customer's current status
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the customer belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST 'https://dev-api-v.tolt.io/v1/customers' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "identifier": "cust_123",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "name": "Jim Halpert",
+    "subscription_id": "sub_456",
+    "customer_id": "jim_halpert_789",
+    "click_id": "click_abc",
+    "status": "active",
+    "active_at": "2025-01-15T14:30:00.000Z"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "email": "james@tolt.com",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "name": "Jim Halpert",
+    "subscription_id": "sub_456",
+    "customer_id": "jim_halpert_789",
+    "click_id": "click_abc",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "lead_at": null,
+    "active_at": "2025-01-15T14:30:00.000Z",
+    "status": "active",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+</ResponseExample>

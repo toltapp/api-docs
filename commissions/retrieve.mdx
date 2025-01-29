@@ -1,0 +1,142 @@
+---
+title: "Retrieve Commission"
+api: "GET https://dev-api-v.tolt.io/v1/commissions/:id"
+description: "This endpoint retrieves a commission."
+---
+
+## Base URL `https://dev-api-v.tolt.io`
+
+<br />
+### Query Parameters
+
+<ParamField body="expand" type="array - optional">
+  Specify which related objects to include in the response. Valid values are
+  **'partner'**, **'program'**, and **'customer'**. Use **expand[]=partner**,
+  **expand[]=program**, or **expand[]=customer** to include the related objects.
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the commission
+    </ResponseField>
+    <ResponseField name="amount" type="number">
+      Commission amount in cents
+    </ResponseField>
+    <ResponseField name="customer_id" type="string">
+      ID of the associated customer
+    </ResponseField>
+    <ResponseField name="transaction_id" type="string">
+      Associated transaction identifier
+    </ResponseField>
+    <ResponseField name="charge_id" type="string">
+      Associated charge identifier
+    </ResponseField>
+    <ResponseField name="source" type="string">
+      Source of the commission
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Commission status
+    </ResponseField>
+    <ResponseField name="revenue" type="number">
+      Revenue amount in cents
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the commission belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X GET 'https://dev-api-v.tolt.io/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+```bash With Expand
+curl -X GET 'https://dev-api-v.tolt.io/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program&expand[]=customer' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+    "amount": 1999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "source": "stripe",
+    "status": "pending",
+    "revenue": 9999,
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+```json Expand Response
+{
+  "success": true,
+  "data": {
+    "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+    "amount": 1999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "source": "stripe",
+    "status": "pending",
+    "revenue": 9999,
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+    "partner": {
+      "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "first_name": "Michael",
+      "last_name": "Scott",
+      "email": "michael.scott@dundermifflin.com",
+      "company_name": "Dunder Mifflin",
+      "status": "active",
+      "created_at": "2025-01-13T10:06:11.251Z"
+    },
+    "program": {
+      "id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "status": "active",
+      "name": "Tolt's Partnership Program",
+      "product_name": "Tolt",
+      "subdomain": "affiliates",
+      "type": "public",
+      "currency_code": "USD",
+      "created_at": "2024-03-05T10:28:08.984+00:00"
+    },
+    "customer": {
+      "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+      "identifier": "cust_123",
+      "name": "Jim Halpert",
+      "status": "active",
+      "created_at": "2025-01-15T14:30:00.000Z"
+    }
+  }
+}
+```
+
+</ResponseExample>

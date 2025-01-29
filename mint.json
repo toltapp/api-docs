@@ -2,17 +2,14 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "API References",
   "logo": {
-    "dark": "/logo/light.svg",
-    "light": "/logo/dark.svg"
+    "dark": "/logo/light.png",
+    "light": "/logo/dark.png"
   },
   "favicon": "/favicon.png",
   "colors": {
-    "primary": "#ff44ec",
-    "light": "#FFFFFF",
-    "dark": "#050038",
-    "background": {
-      "dark": "#090014"
-    },
+    "primary": "#212121",
+    "light": "#B1FD7A",
+    "dark": "#212121",
     "anchors": {
       "from": "#FF7F57",
       "to": "#9563FF"
@@ -24,6 +21,12 @@
       "url": "mailto:support@tolt.io"
     }
   ],
+  "codeBlock": {
+    "mode": "auto"
+  },
+  "background": {
+    "style": "gradient"
+  },
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://app.tolt.io"
@@ -31,26 +34,83 @@
   "primaryTab": {
     "name": "API Reference"
   },
+  "theme": "prism",
   "navigation": [
     {
       "group": "",
-      "pages": ["authentication"]
+      "pages": [
+        "introduction/introduction",
+        "introduction/authentication",
+        "introduction/rate-limit"
+      ]
     },
     {
-      "group": "Affiliates",
-      "pages": ["affiliates/retrieve", "affiliates/create"]
+      "group": "Partners",
+      "pages": [
+        "partners/list",
+        "partners/retrieve",
+        "partners/create",
+        "partners/update",
+        "partners/delete"
+      ]
     },
     {
-      "group": "Referrals",
-      "pages": ["referrals/retrieve", "referrals/create", "referrals/cancel"]
+      "group": "Customers",
+      "pages": [
+        "customers/list",
+        "customers/retrieve",
+        "customers/create",
+        "customers/update",
+        "customers/delete"
+      ]
     },
     {
-      "group": "Rewards",
-      "pages": ["rewards/create", "rewards/refund"]
+      "group": "Clicks",
+      "pages": ["clicks/create"]
+    },
+    {
+      "group": "Links",
+      "pages": [
+        "links/list",
+        "links/retrieve",
+        "links/create",
+        "links/update",
+        "links/delete"
+      ]
+    },
+    {
+      "group": "Commissions",
+      "pages": [
+        "commissions/list",
+        "commissions/retrieve",
+        "commissions/create",
+        "commissions/update",
+        "commissions/delete"
+      ]
+    },
+    {
+      "group": "Transactions",
+      "pages": [
+        "transactions/list",
+        "transactions/retrieve",
+        "transactions/create",
+        "transactions/update",
+        "transactions/delete"
+      ]
+    },
+    {
+      "group": "Promotion Codes",
+      "pages": [
+        "promotion-codes/list",
+        "promotion-codes/retrieve",
+        "promotion-codes/create",
+        "promotion-codes/update",
+        "promotion-codes/delete"
+      ]
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/usetolt",
+    "twitter": "https://twitter.com/tolthq",
     "linkedin": "https://www.linkedin.com/company/usetolt"
   },
   "api": {
