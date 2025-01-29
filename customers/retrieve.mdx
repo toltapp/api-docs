@@ -1,10 +1,10 @@
 ---
 title: "Retrieve Customer"
-api: "GET https://dev-api-v.tolt.io/v1/customers/:id"
+api: "GET https://api.tolt.com/v1/customers/:id"
 description: "This endpoint retrieves a customer."
 ---
 
-## Base URL `https://dev-api-v.tolt.io`
+## Base URL `https://api.tolt.com`
 
 <br />
 ### Query Parameters
@@ -153,14 +153,14 @@ description: "This endpoint retrieves a customer."
 <RequestExample>
 
 ```bash cURL
-curl -X GET 'https://dev-api-v.tolt.io/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW' \
+curl -X GET 'https://api.tolt.com/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW' \
 -H 'Authorization: Bearer <API_KEY>' \
 -H 'Content-Type: application/json' \
 -d ''
 ```
 
 ```bash cURL - Expand & Include
-curl -X GET 'https://dev-api-v.tolt.io/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program&include[]=stats' \
+curl -X GET 'https://api.tolt.com/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW?expand[]=partner&expand[]=program&include[]=stats' \
 -H 'Authorization: Bearer <API_KEY>' \
 -H 'Content-Type: application/json' \
 -d ''
