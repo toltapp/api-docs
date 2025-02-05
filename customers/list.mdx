@@ -77,7 +77,7 @@ description: "This endpoint lists all customers."
     <ResponseField name="id" type="string">
       Unique identifier for the customer, `uuid` or prefixed with `cust_`
     </ResponseField>
-    <ResponseField name="identifier" type="string">
+    <ResponseField name="emai" type="string">
       Your unique identifier for the customer
     </ResponseField>
     <ResponseField name="partner_id" type="string">
@@ -202,7 +202,7 @@ curl -X GET 'https://api.tolt.com/v1/customers?program_id=prg_YRsbPDAKhWfdqJbFAC
   "data": [
     {
       "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-      "identifier": "cust_123",
+      "emai": "cust_123",
       "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
       "name": "Jim Halpert",
       "subscription_id": "sub_456",
@@ -227,7 +227,7 @@ curl -X GET 'https://api.tolt.com/v1/customers?program_id=prg_YRsbPDAKhWfdqJbFAC
   "data": [
     {
       "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-      "identifier": "cust_123",
+      "emai": "cust_123",
       "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
       "name": "Jim Halpert",
       "subscription_id": "sub_456",
