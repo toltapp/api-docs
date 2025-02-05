@@ -60,7 +60,7 @@ description: "This endpoint creates a customer."
     <ResponseField name="id" type="string">
       Unique identifier for the customer, `uuid` or prefixed with `cust_`
     </ResponseField>
-    <ResponseField name="identifier" type="string">
+    <ResponseField name="emai" type="string">
       Your unique identifier for the customer
     </ResponseField>
     <ResponseField name="partner_id" type="string">
@@ -106,7 +106,7 @@ curl -X POST 'https://api.tolt.com/v1/customers' \
 -H 'Authorization: Bearer <API_KEY>' \
 -H 'Content-Type: application/json' \
 -d '{
-    "identifier": "cust_123",
+    "emai": "cust_123",
     "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
     "name": "Jim Halpert",
     "subscription_id": "sub_456",
