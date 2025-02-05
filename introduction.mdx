@@ -1,0 +1,99 @@
+---
+title: "Introduction"
+description: "Welcome to the Tolt API documentation"
+---
+
+<Note>
+  We are actively working on improving our APIs and adding new endpoints and
+  options. Please reach out to us if you have any feedback or suggestions via
+  live chat in the bottom right corner of the page or via email at
+  support@tolt.io.
+</Note>
+
+## Overview
+
+Welcome to Tolt's API documentation. Our API enables you to programmatically manage your partnership program, including partners, commissions, transactions, and more. The API follows RESTful principles and uses standard HTTP methods.
+
+## Base URL
+
+All API requests should be made to:
+
+```bash
+https://api.tolt.com
+```
+
+## Authentication
+
+All API endpoints require authentication using Bearer token authentication. Include your API key in the Authorization header:
+
+```bash
+Authorization: Bearer <API_KEY>
+```
+
+You can find your API key in the [Settings -> Integrations](https://app.tolt.io/settings?tab=integrations) tab.
+
+## Response Format
+
+All responses are returned in JSON format and include a `success` boolean indicating if the request was successful.
+
+### Successful Response Example
+
+```json
+{
+  "success": true,
+  "data": {
+    "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "first_name": "Michael",
+    "last_name": "Scott"
+    // ... other fields
+  }
+}
+```
+
+### Error Response Example
+
+```json
+{
+  "success": false,
+  "error": {
+    "message": "Invalid API key provided",
+    "type": "authentication_error"
+  }
+}
+```
+
+## Common Parameters
+
+Many endpoints support these common query parameters:
+
+- `limit`: Number of records to return (default: 10, max: 100)
+- `starting_after`: Cursor for pagination (forward)
+- `ending_before`: Cursor for pagination (backward)
+- `expand`: Include related objects in the response
+
+## Available Resources
+
+The Tolt API provides access to the following resources:
+
+- **Partners**: Manage your partners and their information
+- **Links**: Create and manage tracking links
+- **Commissions**: Track and manage commission payouts
+- **Transactions**: View and manage transactions
+- **Promotion Codes**: Create and manage promotional codes
+
+## API Versioning
+
+The current version is `v1`. We maintain backwards compatibility within a version and will notify you of any upcoming changes.
+
+## Need Help?
+
+If you need assistance:
+
+- Email us at support@tolt.io
+- Check our [API Status Page](https://status.tolt.io)
+
+## Next Steps
+
+- [Authentication Guide](/api-reference/authentication)
+- [Rate Limits](/api-reference/rate-limits)
+- [Partners API Reference](/api-reference/partners/create)

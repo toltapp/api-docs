@@ -1,18 +1,33 @@
 ---
 title: "Authentication"
-description: "How to authenticate with the API"
+description: "How to authenticate with the Tolt API"
 ---
 
-For authentication you need to send the `Authorization` header with your API Key as the value.
+The Tolt API uses Bearer authentication. For all API requests, you need to include your API key in the `Authorization` header using the Bearer scheme.
 
 ```bash
-'Authorization': '<API_key>'
+'Authorization': 'Bearer <API_KEY>'
 ```
 
 ## API Keys
 
-_coming soon_
+API keys can be found and created in the [Settings -> Integrations](https://app.tolt.io/settings?tab=integrations) tab of your Tolt dashboard.
+
+### Example Request
+
+```bash
+curl -X GET 'https://api.tolt.com/v1/links' \
+-H 'Authorization: Bearer tlt_live_3eYx5GATWpBpW1bJXw4ZD9'
+```
+
+### Security
+
+- Keep your API keys secure and never share them publicly
+- API keys carry many privileges, so be sure to keep them secure
+- Do not commit API keys to your source code
+- Do not share API keys in client-side code
+- Rotate your API keys periodically
 
 ### Permissions
 
-_coming soon_
+Each API key has full access to all API endpoints. We recommend creating separate API keys for different applications or services to make it easier to manage and rotate keys when needed.

@@ -1,0 +1,49 @@
+---
+title: "Delete Commission"
+api: "DELETE https://api.tolt.com/v1/commissions/:id"
+description: "This endpoint deletes a commission."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the deleted commission
+    </ResponseField>
+    <ResponseField name="deleted" type="boolean">
+      Indicates that the commission was deleted
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X DELETE 'https://api.tolt.com/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+    "deleted": true
+  }
+}
+```
+
+</ResponseExample>

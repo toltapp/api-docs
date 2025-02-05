@@ -1,0 +1,162 @@
+---
+title: "Create Click"
+api: "POST https://api.tolt.com/v1/clicks"
+description: "This endpoint creates a click. You can create a click either by providing partner and link IDs or by using a tracking parameter and value."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+### Body Parameters
+
+You can create a click using one of these two methods:
+
+#### Method 1: Using Partner and Link IDs
+
+<ParamField body="partner_id*" type="string">
+  The ID of the partner who generated the click
+</ParamField>
+
+<ParamField body="link_id" type="string - optional">
+  The ID of the link that was clicked
+</ParamField>
+
+#### Method 2: Using Tracking Parameter
+
+<ParamField body="param*" type="string">
+  The tracking parameter name (e.g., 'ref', 'via')
+</ParamField>
+
+<ParamField body="value*" type="string">
+  The value of the tracking parameter
+</ParamField>
+
+#### Common Optional Parameters
+
+<ParamField body="country" type="string - optional">
+  Two-letter ISO country code where the click originated
+</ParamField>
+
+<ParamField body="device" type="string - optional">
+  Device type that generated the click (e.g., 'desktop', 'mobile', 'tablet')
+</ParamField>
+
+<ParamField body="page" type="string - optional">
+  URL of the page where the click occurred
+</ParamField>
+
+<ParamField body="referrer" type="string - optional">
+  URL of the referring page
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the click, `uuid` or prefixed with `clk_`
+    </ResponseField>
+    <ResponseField name="partner_id" type="string">
+      ID of the partner who generated the click
+    </ResponseField>
+    <ResponseField name="link_id" type="string">
+      ID of the link that was clicked
+    </ResponseField>
+    <ResponseField name="country" type="string">
+      Two-letter ISO country code
+    </ResponseField>
+    <ResponseField name="device" type="string">
+      Device type
+    </ResponseField>
+    <ResponseField name="page" type="string">
+      Page URL
+    </ResponseField>
+    <ResponseField name="referrer" type="string">
+      Referrer URL
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the click belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash Method 1: Partner ID
+curl -X POST 'https://api.tolt.com/v1/clicks' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "link_id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+    "country": "US",
+    "device": "desktop",
+    "page": "https://example.com/product",
+    "referrer": "https://google.com"
+}'
+```
+
+```bash Method 2: Tracking Parameter
+curl -X POST 'https://api.tolt.com/v1/clicks' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "param": "ref",
+    "value": "michael_scott",
+    "country": "US",
+    "device": "mobile",
+    "page": "https://example.com/product",
+    "referrer": "https://twitter.com"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response - Method 1
+{
+  "success": true,
+  "data": {
+    "id": "clk_dK9bzRGn46BhVgNFHD6fDgXW",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "link_id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+    "country": "US",
+    "device": "desktop",
+    "page": "https://example.com/product",
+    "referrer": "https://google.com",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+```json Response - Method 2
+{
+  "success": true,
+  "data": {
+    "id": "clk_eL7bzRGn46BhVgNFHD6fDgXW",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "country": "US",
+    "device": "mobile",
+    "page": "https://example.com/product",
+    "referrer": "https://twitter.com",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+</ResponseExample>

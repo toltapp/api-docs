@@ -1,0 +1,88 @@
+---
+title: "Update Promotion Code"
+api: "PUT https://api.tolt.com/v1/promotion-codes/:id"
+description: "This endpoint updates a promotion code."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+### Body Parameters
+
+<ParamField body="type" type="string - optional">
+  The type of discount. Valid values are: **'fixed'** or **'percentage'**
+</ParamField>
+
+<ParamField body="value" type="number - optional">
+  The discount value. For fixed type, amount in cents. For percentage type,
+  value between 0 and 100
+</ParamField>
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the promotion code
+    </ResponseField>
+    <ResponseField name="code" type="string">
+      The promotion code value
+    </ResponseField>
+    <ResponseField name="type" type="string">
+      The type of discount
+    </ResponseField>
+    <ResponseField name="value" type="number">
+      The discount value
+    </ResponseField>
+    <ResponseField name="partner_id" type="string">
+      ID of the partner who owns the code
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of creation
+    </ResponseField>
+    <ResponseField name="program_id" type="string">
+      Program ID the promotion code belongs to
+    </ResponseField>
+    <ResponseField name="organization_id" type="string">
+      Organization ID
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X PUT 'https://api.tolt.com/v1/promotion-codes/prc_dK9bzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "type": "fixed",
+    "value": 2500
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "prc_dK9bzRGn46BhVgNFHD6fDgXW",
+    "code": "SUMMER2024",
+    "type": "fixed",
+    "value": 2500,
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
+}
+```
+
+</ResponseExample>

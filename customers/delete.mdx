@@ -1,0 +1,52 @@
+---
+title: "Delete Customer"
+api: "DELETE https://api.tolt.com/v1/customers/:id"
+description: "This endpoint deletes a customer."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the deleted customer, `uuid` or prefixed with
+      `cust_`
+    </ResponseField>
+    <ResponseField name="deleted" type="boolean">
+      Indicates that the customer was deleted
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X DELETE 'https://api.tolt.com/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "deleted": true
+  }
+}
+```
+
+</ResponseExample>
