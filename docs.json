@@ -1,0 +1,144 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Documentation",
+  "colors": {
+    "primary": "#212121",
+    "light": "#B1FD7A",
+    "dark": "#212121"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": " ",
+            "pages": ["documentation/test1/test", "documentation/test2/test"]
+          },
+          {
+            "group": "Payment Tracking",
+            "pages": ["documentation/test1/test", "documentation/test2/test"]
+          }
+        ]
+      },
+      {
+        "tab": "API References",
+        "groups": [
+          {
+            "group": " ",
+            "pages": [
+              "api/introduction",
+              "api/authentication",
+              "api/rate-limit"
+            ]
+          },
+          {
+            "group": "Partners",
+            "pages": [
+              "api/partners/list",
+              "api/partners/retrieve",
+              "api/partners/create",
+              "api/partners/update",
+              "api/partners/delete"
+            ]
+          },
+          {
+            "group": "Customers",
+            "pages": [
+              "api/customers/list",
+              "api/customers/retrieve",
+              "api/customers/create",
+              "api/customers/update",
+              "api/customers/delete"
+            ]
+          },
+          {
+            "group": "Clicks",
+            "pages": ["api/clicks/create"]
+          },
+          {
+            "group": "Links",
+            "pages": [
+              "api/links/list",
+              "api/links/retrieve",
+              "api/links/create",
+              "api/links/update",
+              "api/links/delete"
+            ]
+          },
+          {
+            "group": "Commissions",
+            "pages": [
+              "api/commissions/list",
+              "api/commissions/retrieve",
+              "api/commissions/create",
+              "api/commissions/update",
+              "api/commissions/delete"
+            ]
+          },
+          {
+            "group": "Transactions",
+            "pages": [
+              "api/transactions/list",
+              "api/transactions/retrieve",
+              "api/transactions/create",
+              "api/transactions/update",
+              "api/transactions/delete"
+            ]
+          },
+          {
+            "group": "Promotion Codes",
+            "pages": [
+              "api/promotion-codes/list",
+              "api/promotion-codes/retrieve",
+              "api/promotion-codes/create",
+              "api/promotion-codes/update",
+              "api/promotion-codes/delete"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "styling": {
+    "codeblocks": "system"
+  },
+  "logo": {
+    "light": "/logo/dark.png",
+    "dark": "/logo/light.png"
+  },
+  "api": {
+    "playground": {
+      "display": "simple"
+    }
+  },
+  "background": {
+    "decoration": "gradient"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@tolt.io"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "https://app.tolt.io"
+    }
+  },
+  "footer": {
+    "socials": {
+      "twitter": "https://twitter.com/tolthq",
+      "linkedin": "https://www.linkedin.com/company/usetolt"
+    }
+  },
+  "integrations": {
+    "intercom": {
+      "appId": "satkmf6i"
+    }
+  }
+}
