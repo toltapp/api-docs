@@ -1,0 +1,284 @@
+---
+title: "Retrieve Partner"
+api: "GET https://api.tolt.com/v1/partners/:id"
+description: "This endpoint retrieves a partner."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+### Query Parameters
+
+<ParamField body="expand" type="array - optional">
+  Specify which related objects to include in the response. Valid values are
+  **'group'** and **'program'**. Use **expand[]=group** or **expand[]=program**
+  to include the related objects.
+</ParamField>
+
+<ParamField body="include" type="array - optional">
+  Specify which related objects to include in the response. Valid values are
+  **'stats'**. Use **include[]=stats** to include the related objects.
+</ParamField>
+
+### Response
+
+<ResponseField name="id" type="string">
+  Unique identifier for the partner, `uuid` or prefixed with `part_`.
+</ResponseField>
+
+<ResponseField name="first_name" type="string">
+  Partner's first name
+</ResponseField>
+
+<ResponseField name="last_name" type="string">
+  Partner's last name
+</ResponseField>
+
+<ResponseField name="email" type="string">
+  Partner's email address
+</ResponseField>
+
+<ResponseField name="company_name" type="string">
+  Partner's company name
+</ResponseField>
+
+<ResponseField name="program_id" type="string">
+  Unique identifier for the program the partner belongs to, `uuid` or prefixed
+  with `prg_`.
+</ResponseField>
+
+<ResponseField name="organization_id" type="string">
+  Unique identifier for the organization, `uuid` or prefixed with `org_`.
+</ResponseField>
+
+<ResponseField name="group_id" type="string">
+  Unique identifier for the partner's group, `uuid` or prefixed with `grp_`.
+</ResponseField>
+
+<ResponseField name="payout_method" type="string">
+  Partner's selected payout method (e.g., 'paypal', 'crypto', 'wise',
+  'bank_transfer', 'wire', 'none')
+</ResponseField>
+
+<ResponseField name="payout_details" type="object">
+  Details specific to the selected payout method (e.g., PayPal email, bank
+  details)
+</ResponseField>
+
+<ResponseField name="country_code" type="string">
+  Two-letter ISO country code of the partner
+</ResponseField>
+
+<ResponseField name="created_at" type="string">
+  ISO 8601 timestamp of when the partner was created
+</ResponseField>
+
+<ResponseField name="status" type="string">
+  Current status of the partner (e.g., 'active', 'inactive')
+</ResponseField>
+
+<ResponseField name="group" type="object">
+  <Expandable title="group" defaultOpen={false}>
+    Group details when expanded:
+    <ResponseField name="id" type="string">
+      Unique identifier for the group
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Name of the group
+    </ResponseField>
+    <ResponseField name="description" type="string">
+      Description of the group
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of when the group was created
+    </ResponseField>
+    <ResponseField name="public_key" type="string">
+      Public identifier for the group
+    </ResponseField>
+    <ResponseField name="default" type="boolean">
+      Whether this is the default group
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="program" type="object">
+  <Expandable title="program" defaultOpen={false}>
+    Program details when expanded:
+    <ResponseField name="id" type="string">
+      Unique identifier for the program
+    </ResponseField>
+    <ResponseField name="status" type="string">
+      Program status
+    </ResponseField>
+    <ResponseField name="name" type="string">
+      Program name
+    </ResponseField>
+    <ResponseField name="product_name" type="string">
+      Name of the product
+    </ResponseField>
+    <ResponseField name="subdomain" type="string">
+      Program's subdomain
+    </ResponseField>
+    <ResponseField name="type" type="string">
+      Program type (e.g., 'public')
+    </ResponseField>
+    <ResponseField name="currency_code" type="string">
+      Three-letter ISO currency code
+    </ResponseField>
+    <ResponseField name="cookie_duration" type="integer">
+      Duration of tracking cookies in days
+    </ResponseField>
+    <ResponseField name="payout_methods" type="array">
+      Available payout methods
+    </ResponseField>
+    <ResponseField name="payout_term" type="string">
+      Payment terms in days
+    </ResponseField>
+    <ResponseField name="url_params" type="array">
+      Supported URL parameters for tracking
+    </ResponseField>
+    <ResponseField name="created_at" type="string">
+      ISO 8601 timestamp of when the program was created
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="stats" type="object">
+  <Expandable title="stats" defaultOpen={false}>
+    An object containing the partner's performance statistics. All monetary
+    values are in cents (or lowest denomination of the currency).
+    <ResponseField name="total_clicks" type="integer">
+      Total number of clicks on partner's referral links
+    </ResponseField>
+    <ResponseField name="total_customers" type="integer">
+      Total number of customers referred
+    </ResponseField>
+    <ResponseField name="total_revenue" type="integer">
+      Total revenue generated in cents
+    </ResponseField>
+    <ResponseField name="total_commission" type="integer">
+      Total commission earned in cents
+    </ResponseField>
+    <ResponseField name="total_leads" type="integer">
+      Total number of leads generated
+    </ResponseField>
+    <ResponseField name="total_trial_customers" type="integer">
+      Total number of trial customers
+    </ResponseField>
+    <ResponseField name="total_paid_customers" type="integer">
+      Total number of paid customers
+    </ResponseField>
+    <ResponseField name="total_canceled_customers" type="integer">
+      Total number of customers who canceled
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X GET 'https://api.tolt.com/v1/partners/part_s7mbzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+```bash cURL - Expand & Include
+curl -X GET 'https://api.tolt.com/v1/partners/part_s7mbzRGn46BhVgNFHD6fDgXW&expand[]=group&expand[]=program&include[]=stats' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d ''
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Response
+{
+    "success": true,
+    "data": {
+        "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+        "first_name": "Michael",
+        "last_name": "Scott",
+        "email": "michael.scott@dundermifflin.com",
+        "company_name": "Dunder Mifflin",
+        "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+        "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+        "group_id": "grp_Zc2uw9zm1eyBiD3MHcjV3RDn",
+        "payout_method": "paypal",
+        "payout_details": {
+            "email": "michael.paypal@dundermifflin.com",
+        },
+        "country_code": "US",
+        "created_at": "2025-01-13T10:06:11.251Z",
+        "status": "active"
+    }
+}
+```
+
+```bash Expand & Include Response
+{
+    "success": true,
+    "data": {
+        "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+        "first_name": "Michael",
+        "last_name": "Scott",
+        "email": "michael.scott@dundermifflin.com",
+        "company_name": "Dunder Mifflin",
+        "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+        "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+        "group_id": "grp_Zc2uw9zm1eyBiD3MHcjV3RDn",
+        "payout_method": "paypal",
+        "payout_details": {
+            "email": "michael.paypal@dundermifflin.com",
+        },
+        "country_code": "US",
+        "created_at": "2025-01-13T10:06:11.251Z",
+        "group": {
+            "id": "grp_Zc2uw9zm1eyBiD3MHcjV3RDn",
+            "name": "Dunder Mifflin Group",
+            "description": "Dunder Mifflin Group 20% off",
+            "created_at": "2024-11-25T15:24:26.846428+00:00",
+            "public_key": "dunder-mifflin-group",
+            "default": true
+        },
+        "program": {
+            "id": "prg_YRsbPDAKhWfdqJbFACheh",
+            "status": "active",
+            "name": "Tolt's Partnership Program",
+            "product_name": "Tolt",
+            "subdomain": "affiliates",
+            "type": "public",
+            "currency_code": "USD",
+            "cookie_duration": 30,
+            "payout_methods": [
+                "none",
+                "crypto",
+                "wise",
+                "bank_transfer",
+                "wire",
+                "paypal"
+            ],
+            "payout_term": "15",
+            "url_params": [
+                "aff",
+                "via"
+            ],
+            "created_at": "2024-03-05T10:28:08.984+00:00"
+        },
+        "stats": {
+            "total_clicks": 40,
+            "total_customers": 41,
+            "total_revenue": 522226,
+            "total_commission": 1741877,
+            "total_leads": 11,
+            "total_trial_customers": 0,
+            "total_paid_customers": 23,
+            "total_canceled_customers": 6
+        }
+    }
+}
+```
+
+</ResponseExample>

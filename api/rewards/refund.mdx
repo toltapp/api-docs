@@ -1,0 +1,32 @@
+---
+title: "Refund Reward"
+api: "PUT https://api.tolt.io/private/v1/rewards/refund"
+description: "This endpoint creates a new reward for an existing referral"
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Body
+
+<ParamField body="reward*" type="string">
+  The reward UUID generated from Tolt or the charge_id assigned to the reward.
+</ParamField>
+
+<ParamField body="amount*" type="number">
+  The total refund amount in program currency.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl -X PUT 'https://api.tolt.io/private/v1/rewards/refund' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "reward": "ch_3ALtyUCUwJaq1DxC0aHSQ1SF",
+    "amount": 8.99
+}'
+```
+
+</RequestExample>

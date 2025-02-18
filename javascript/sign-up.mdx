@@ -1,0 +1,63 @@
+---
+title: "Lead Tracking"
+description: "Convert clicks into leads by signing up visitors with a unique identifier"
+icon: "user-plus"
+---
+
+## Overview
+
+When a visitor comes through an affiliate link, you can convert their click into a lead by calling the signup function. Before signing up, you should check if:
+
+1. The visitor came through an affiliate link (`window.tolt_data` exists)
+2. The visitor hasn't already been signed up (`customer_id` is null)
+
+### Example Implementation
+
+```javascript
+async function signUpVisitor(identifier) {
+  // Check if visitor came through affiliate link
+  if (!window.tolt_data) {
+    console.log("Not an affiliate click");
+    return;
+  }
+
+  // Check if visitor is already signed up
+  if (window.tolt_data.customer_id) {
+    console.log("Visitor already signed up");
+    return;
+  }
+
+  try {
+    const result = await window.tolt.signup(identifier);
+    console.log("Signup successful:", result);
+    return result;
+  } catch (error) {
+    console.error("Signup failed:", error);
+  }
+}
+```
+
+The `identifier` parameter should be unique to each customer (like an email or user ID).
+
+On success, the function returns:
+
+```javascript
+{
+  click_id: "30aa8b8d-b846-4827-bd6f-6beb16466841",
+  customer_id: "cus_aE1xbsSk3HuZk58B2usFXNSv",
+  customer_identifier: "unique_identifier",
+  partner_id: "f468da94-f786-485c-9314-3008ce472188",
+  program_id: "prg_YRsbPDAKhWAdqJbFACheh",
+  message: "Success"
+}
+```
+
+If the identifier already exists in the system, the function will throw a 409 error:
+
+```javascript
+{
+  message: "Customer already exists";
+}
+```
+
+After a successful signup, `window.tolt_data` will be automatically updated with the new `customer_id`.

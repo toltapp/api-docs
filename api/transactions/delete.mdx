@@ -1,0 +1,49 @@
+---
+title: "Delete Transaction"
+api: "DELETE https://api.tolt.com/v1/transactions/:id"
+description: "This endpoint deletes a transaction."
+---
+
+## Base URL `https://api.tolt.com`
+
+<br />
+
+### Response
+
+<ResponseField name="success" type="boolean">
+  Whether the request was successful
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="id" type="string">
+      Unique identifier for the deleted transaction
+    </ResponseField>
+    <ResponseField name="deleted" type="boolean">
+      Indicates that the transaction was deleted
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<RequestExample>
+
+```bash cURL
+curl -X DELETE 'https://api.tolt.com/v1/transactions/txn_eK9bzRGn46BhVgNFHD6fDgXW' \
+-H 'Authorization: Bearer <API_KEY>'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "success": true,
+  "data": {
+    "id": "txn_eK9bzRGn46BhVgNFHD6fDgXW",
+    "deleted": true
+  }
+}
+```
+
+</ResponseExample>

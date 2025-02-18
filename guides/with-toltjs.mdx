@@ -1,0 +1,62 @@
+---
+title: "Track with tolt.js"
+description: "Track partner clicks, leads, and payments using the tolt.js script"
+icon: "chart-line"
+---
+
+## Tracking Flow
+
+### 1. Click Tracking
+
+The tolt.js script automatically tracks visitors that come through partner links:
+
+- When a visitor arrives through an partner link, tolt.js creates a click
+- The click data is accessible through `window.tolt_data`:
+
+```javascript
+{
+  click_id: "30aa8b8d-b846-4827-bd6f-6beb16466841",
+  cookie_duration: 30,
+  partner_id: "f468da94-f786-485c-9314-3008ce472188",
+  program_id: "prg_YRsbPDAKhWAdqJbFACheh",
+  customer_id: null  // Will be set after signup
+}
+```
+
+### 2. Lead Tracking
+
+When a visitor signs up, convert them to a lead using the signup function:
+
+```javascript
+const result = await window.tolt.signup("user@example.com");
+// Returns signup data including customer_id
+```
+
+After signup, store the `customer_id` and `partner_id` from `window.tolt_data` in your database. You'll need these to track future payments for this customer.
+
+### 3. Payment Tracking
+
+When the customer makes a payment, call the [create a transaction](/transactions/create) API:
+
+```bash
+curl -X POST 'https://api.tolt.com/v1/transactions' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "amount": 9999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "billing_type": "subscription",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "product_name": "Premium Plan",
+    "source": "stripe",
+    "interval": "month"
+}'
+```
+
+When a transaction is created, Tolt automatically:
+
+1. Identifies the associated partner through the customer_id
+2. Triggers the programs commission flows
+3. The flows will create a commission record for the partner if the conditions are met
+
+This completes the tracking cycle from initial click through to paid commission.

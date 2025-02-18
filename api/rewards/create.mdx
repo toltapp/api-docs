@@ -1,0 +1,58 @@
+---
+title: "Create Reward"
+api: "POST https://api.tolt.io/private/v1/rewards"
+description: "This endpoint creates a new reward for an existing referral"
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Body
+
+<ParamField body="referralId*" type="string">
+  The ID that is assigned to the referral. **Optional if email is present**.
+</ParamField>
+
+<ParamField body="referralEmail*" type="string">
+  The email that is assigned to the referral. **Optional if id is present**.
+</ParamField>
+
+<ParamField body="amount*" type="number">
+  The total amount of the payment made by the referral. Note: This is the total
+  amount, and not the commission amount.
+</ParamField>
+
+<ParamField body="platform*" type="string">
+  The platform where the payment was made. Stripe, Paddle, Chargebee or any
+  other payment processor.
+</ParamField>
+
+<ParamField body="chargeId" type="string - optional">
+  The external charge ID that is assigned to the payment made by the referral.
+</ParamField>
+
+<RequestExample>
+
+```bash Example Request
+curl -X POST 'https://api.tolt.io/private/v1/rewards' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "referralEmail": "some@email.com",
+    "amount": 99,
+    "platform": "stripe"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Example Response
+{
+    "id": "458fa144-298c-9901-t150-5b3cf3913h95",
+    "amount": 100
+}
+```
+
+</ResponseExample>
