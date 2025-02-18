@@ -1,0 +1,78 @@
+---
+title: "Track without tolt.js"
+description: "Track affiliate clicks, leads, and payments using direct API calls"
+icon: "chart-gantt"
+---
+
+## Tracking Flow
+
+### 1. Click Tracking
+
+When a visitor arrives through an partner link (e.g., `yourdomain.com?ref=partner123`), call the [create a click](/clicks/create) API:
+
+```bash
+curl -X POST 'https://api.tolt.com/v1/clicks' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "param": "ref",
+    "value": "partner123",
+    "page": "https://yourdomain.com/product",
+    "device": "desktop"
+}'
+```
+
+If the param & value combination doesn't exist in your program, the API will return an error:
+
+```json
+{
+  "success": false,
+  "error": "Link not found"
+}
+```
+
+On success, store the returned `partner_id` - you'll need it to create the customer later.
+
+### 2. Lead Tracking
+
+When the visitor signs up, [create a customer](/customers/create) using the stored `partner_id`:
+
+```bash
+curl -X POST 'https://api.tolt.com/v1/customers' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "email": "user@example.com",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "customer_id": "your_internal_user_id"
+}'
+```
+
+Store the returned `customer_id` alongside your user data - you'll need it for tracking payments.
+
+### 3. Payment Tracking
+
+When the customer makes a payment, [create a transaction](/transactions/create) using the stored `customer_id`:
+
+```bash
+curl -X POST 'https://api.tolt.com/v1/transactions' \
+-H 'Authorization: Bearer <API_KEY>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "amount": 9999,
+    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "billing_type": "subscription",
+    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+    "product_name": "Premium Plan",
+    "source": "stripe",
+    "interval": "month"
+}'
+```
+
+When a transaction is created, Tolt automatically:
+
+1. Identifies the associated partner through the customer_id
+2. Triggers the programs commission flows
+3. The flows will create a commission record for the partner if the conditions are met
+
+This completes the tracking cycle from initial click through to paid commission.

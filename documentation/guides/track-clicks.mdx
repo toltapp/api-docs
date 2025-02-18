@@ -1,0 +1,36 @@
+---
+title: "Track Clicks"
+description: "Clicks are unique clicks on an affiliate link. The click ID is used for customer and payment tracking. Clicks can be created with the API or by the tolt.js script."
+icon: "computer-mouse"
+---
+
+## 1. tolt.js
+
+### What's tolt.js and how to add it?
+The tolt.js script is a JavaScript library that allows you to track clicks and leads on your website. 
+It needs to be added to the head of your webiste/app, so it can track clicks on affiliate links and leads when the signup function is used.
+<Tabs>
+  <Tab title="Default">
+    ```html
+    <script>
+      src="https://cdn.tolt.io/tolt.js" 
+      data-tolt="YOUR_PUBLIC_ORG_KEY">
+    </script>
+    ```
+  </Tab>
+  <Tab title="Alternative">
+    ```javascript
+    <script>
+      var toltScript = document.createElement('script');
+      toltScript.src = 'https://cdn.tolt.io/tolt.js';
+      toltScript.setAttribute('data-tolt', 'YOUR_PUBLIC_ORG_KEY');
+      document.head.appendChild(toltScript);
+    </script>
+    ```
+  </Tab>
+</Tabs>
+
+### How to use tolt.js
+
+The script will automatically track clicks when your website is visited through a valid partner link. 
+When the click is created the script will create a cookie called `tolt_referral` with the click ID as the value.

@@ -1,0 +1,46 @@
+---
+title: "Overview"
+description: "The tolt.js script is a JavaScript library that automatically tracks partner clicks and can convert them into leads on your website/app"
+icon: "code"
+---
+
+## Introduction
+
+tolt.js is a JavaScript tracking library that handles partner tracking on your website. When added to your site, it automatically tracks visitors from partner links and provides access to tracking data through `window.tolt_data`.
+
+### Tracking Data
+
+When a visitor arrives through an partner link, `window.tolt_data` contains:
+
+```javascript
+{
+  click_id: "30aa8b8d-b846-4827-bd6f-6beb16466841",
+  cookie_duration: 30,
+  partner_id: "f468da94-f786-485c-9314-3008ce472188",
+  program_id: "prg_YRsbPDAKhWAdqJbFACheh",
+  customer_id: null  // Only present after signup
+}
+```
+
+If no affiliate link was used, `window.tolt_data` will be `null`.
+
+### Lead Tracking
+
+The script provides a signup function to convert clicks into leads:
+
+```javascript
+const result = await window.tolt.signup("unique_identifier");
+// unique_identifier can be an email or unique ID
+
+// Returns:
+{
+  click_id: "30aa8b8d-b846-4827-bd6f-6beb16466841",
+  customer_id: "cus_aE1xbsSk3HuZk58B2usFXNSv",
+  customer_identifier: "unique_identifier",
+  partner_id: "f468da94-f786-485c-9314-3008ce472188",
+  program_id: "prg_YRsbPDAKhWAdqJbFACheh",
+  message: "Success"
+}
+```
+
+After a successful signup, `window.tolt_data` will be updated to include the `customer_id`.

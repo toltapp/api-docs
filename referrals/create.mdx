@@ -1,0 +1,61 @@
+---
+title: "Create Referral"
+api: "POST https://api.tolt.io/private/v1/referrals"
+description: "This endpoint creates a new referral for an affiliate"
+---
+
+## Base URL `https://api.tolt.io`
+
+<br />
+### Body
+
+<ParamField body="email*" type="string" required>
+  The referral email address.
+</ParamField>
+
+<ParamField body="plan" type="string - optional">
+  The referral plan name.
+</ParamField>
+
+<ParamField body="affiliate*" type="string" required>
+  affiliate email address or affiliate id.
+</ParamField>
+
+<ParamField body="programId*" type="string" required>
+  The program id.
+</ParamField>
+
+<ParamField body="status" type="string - optional" default="active">
+  The referral status: <strong>active or lead</strong>
+</ParamField>
+
+<RequestExample>
+
+```bash cURL
+curl -X POST 'https://api.tolt.io/private/v1/referrals' \
+-H 'Authorization: <API_ID>' \
+-H 'Content-Type: application/json' \
+-d '{
+    "email": "test@gmail.com",
+    "plan": "Starter",
+    "affiliate": "affiliate@gmail.com",
+    "programId": "cadc56c7-4a4d-4993-b1be-f44ca139ba"
+}'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```bash Example Response
+{
+    "id": "ccf33a0a-8641-44f7-a7e0-d638932x115",
+    "email": "test@gmail.com",
+    "plan": "Starter",
+    "status": "active",
+    "programId": "cadc56c7-4a4d-4993-b1be-f44ca139ba"
+    "lead": true
+}
+```
+
+</ResponseExample>
