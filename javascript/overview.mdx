@@ -4,13 +4,34 @@ description: "The tolt.js script is a JavaScript library that automatically trac
 icon: "code"
 ---
 
-## Introduction
+## Installation
 
-tolt.js is a JavaScript tracking library that handles partner tracking on your website. When added to your site, it automatically tracks visitors from partner links and provides access to tracking data through `window.tolt_data`.
+Add the tolt.js script to the head of your website/app:
 
-### Tracking Data
+<Tabs>
+  <Tab title="Default">
+    ```html
+    <script
+      src="https://cdn.tolt.io/tolt.js"
+      data-tolt="YOUR_PUBLIC_ORG_KEY"
+    ></script>
+    ```
+  </Tab>
+  <Tab title="Alternative">
+    ```javascript
+    <script>
+      var toltScript = document.createElement('script'); 
+      toltScript.src = 'https://cdn.tolt.io/tolt.js'; 
+      toltScript.setAttribute('data-tolt', 'YOUR_PUBLIC_ORG_KEY'); 
+      document.head.appendChild(toltScript);
+    </script>
+    ```
+  </Tab>
+</Tabs>
 
-When a visitor arrives through an partner link, `window.tolt_data` contains:
+## Tracking Data
+
+When a visitor arrives through a partner link, `window.tolt_data` contains:
 
 ```javascript
 {
