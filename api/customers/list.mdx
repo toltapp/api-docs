@@ -73,7 +73,9 @@ description: "This endpoint lists all customers."
 </ResponseField>
 
 <ResponseField name="data" type="array[Object]">
-  <Expandable title="properties" defaultOpen={false}>
+  <Expandable title="properties" defaultOpen={true}>
+    <ResponseField name="data" type="Object{array}">
+   <Expandable title="properties" defaultOpen={false}>
     <ResponseField name="id" type="string">
       Unique identifier for the customer, `uuid` or prefixed with `cust_`
     </ResponseField>
@@ -171,6 +173,8 @@ description: "This endpoint lists all customers."
       </Expandable>
     </ResponseField>
 
+   </Expandable>
+</ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -202,15 +206,12 @@ curl -X GET 'https://api.tolt.com/v1/customers?program_id=prg_YRsbPDAKhWfdqJbFAC
   "data": [
     {
       "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-      "identifier": "cust_123",
+      "email": "customer@example.com",
       "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
       "name": "Jim Halpert",
-      "subscription_id": "sub_456",
       "customer_id": "jim_halpert_789",
-      "click_id": "click_abc",
       "created_at": "2025-01-15T14:30:00.000Z",
-      "lead_at": null,
-      "active_at": "2025-01-15T15:00:00.000Z",
+      "updated_at": "2025-01-15T14:30:00.000Z",
       "status": "active",
       "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
       "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"

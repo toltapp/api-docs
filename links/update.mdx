@@ -23,7 +23,7 @@ description: "This endpoint updates a tracking link."
   Whether the request was successful
 </ResponseField>
 
-<ResponseField name="data" type="object">
+<ResponseField name="data" type="array[Object]">
   <Expandable title="properties" defaultOpen={true}>
     <ResponseField name="id" type="string">
       Unique identifier for the link
@@ -68,15 +68,18 @@ curl -X PUT 'https://api.tolt.com/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW' \
 ```json Response
 {
   "success": true,
-  "data": {
-    "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
-    "param": "via",
-    "value": "michael_scott_new",
-    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-  }
+  "data": [
+    {
+      "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "param": "via",
+      "value": "michael_scott_new",
+      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "created_at": "2025-01-15T14:30:00.000Z",
+      "updated_at": "2025-01-15T14:30:00.000Z",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+    }
+  ]
 }
 ```
 

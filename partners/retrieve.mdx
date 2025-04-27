@@ -77,6 +77,10 @@ description: "This endpoint retrieves a partner."
   Current status of the partner (e.g., 'active', 'inactive')
 </ResponseField>
 
+<ResponseField name="custom_fields" type="array">
+  Answers submitted by the partner during sign-up.
+</ResponseField>
+
 <ResponseField name="group" type="object">
   <Expandable title="group" defaultOpen={false}>
     Group details when expanded:
@@ -212,7 +216,8 @@ curl -X GET 'https://api.tolt.com/v1/partners/part_s7mbzRGn46BhVgNFHD6fDgXW&expa
         },
         "country_code": "US",
         "created_at": "2025-01-13T10:06:11.251Z",
-        "status": "active"
+        "status": "active",
+        "custom_fields": []
     }
 }
 ```
