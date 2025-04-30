@@ -38,27 +38,15 @@ description: "This endpoint retrieves a customer."
   Customer's name
 </ResponseField>
 
-<ResponseField name="subscription_id" type="string">
-  Associated subscription identifier
-</ResponseField>
-
 <ResponseField name="customer_id" type="string">
   Your internal customer identifier
-</ResponseField>
-
-<ResponseField name="click_id" type="string">
-  Tracking click identifier
 </ResponseField>
 
 <ResponseField name="created_at" type="string">
   ISO 8601 timestamp of when the customer was created
 </ResponseField>
 
-<ResponseField name="lead_at" type="string">
-  ISO 8601 timestamp of when the customer became a lead
-</ResponseField>
-
-<ResponseField name="active_at" type="string">
+<ResponseField name="updated_at" type="string">
   ISO 8601 timestamp of when the customer became active
 </ResponseField>
 
@@ -173,71 +161,61 @@ curl -X GET 'https://api.tolt.com/v1/customers/cust_dK9bzRGn46BhVgNFHD6fDgXW?exp
 ```json Response
 {
   "success": true,
-  "data": [
-    {
-      "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-      "email": "cust_123",
-      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-      "name": "Jim Halpert",
-      "subscription_id": "sub_456",
-      "customer_id": "jim_halpert_789",
-      "click_id": "click_abc",
-      "created_at": "2025-01-15T14:30:00.000Z",
-      "lead_at": null,
-      "active_at": "2025-01-15T15:00:00.000Z",
-      "status": "active",
-      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-    }
-  ]
+  "data": {
+    "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "email": "customer@email.com",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "name": "Jim Halpert",
+    "customer_id": "jim_halpert_789",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "updated_at": "2025-01-15T15:00:00.000Z",
+    "status": "active",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+  }
 }
 ```
 
 ```json Expand & Include Response
 {
   "success": true,
-  "data": [
-    {
-      "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-      "email": "cust_123",
-      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-      "name": "Jim Halpert",
-      "subscription_id": "sub_456",
-      "customer_id": "jim_halpert_789",
-      "click_id": "click_abc",
-      "created_at": "2025-01-15T14:30:00.000Z",
-      "lead_at": null,
-      "active_at": "2025-01-15T15:00:00.000Z",
+  "data": {
+    "id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
+    "email": "customer@email.com",
+    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+    "name": "Jim Halpert",
+    "customer_id": "jim_halpert_789",
+    "created_at": "2025-01-15T14:30:00.000Z",
+    "updated_at": "2025-01-15T15:00:00.000Z",
+    "status": "active",
+    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+    "partner": {
+      "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "first_name": "Michael",
+      "last_name": "Scott",
+      "email": "michael.scott@dundermifflin.com",
+      "company_name": "Dunder Mifflin",
       "status": "active",
-      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
-      "partner": {
-        "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-        "first_name": "Michael",
-        "last_name": "Scott",
-        "email": "michael.scott@dundermifflin.com",
-        "company_name": "Dunder Mifflin",
-        "status": "active",
-        "created_at": "2025-01-13T10:06:11.251Z"
-      },
-      "program": {
-        "id": "prg_YRsbPDAKhWfdqJbFACheh",
-        "status": "active",
-        "name": "Tolt's Partnership Program",
-        "product_name": "Tolt",
-        "subdomain": "affiliates",
-        "type": "public",
-        "currency_code": "USD",
-        "created_at": "2024-03-05T10:28:08.984+00:00"
-      },
-      "stats": {
-        "total_revenue": 99900,
-        "total_commission": 19980,
-        "total_orders": 3,
-        "last_order_at": "2025-01-20T09:15:32.000Z"
-      }
+      "created_at": "2025-01-13T10:06:11.251Z"
+    },
+    "program": {
+      "id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "status": "active",
+      "name": "Tolt's Partnership Program",
+      "product_name": "Tolt",
+      "subdomain": "affiliates",
+      "type": "public",
+      "currency_code": "USD",
+      "created_at": "2024-03-05T10:28:08.984+00:00"
+    },
+    "stats": {
+      "total_revenue": 99900,
+      "total_commission": 19980,
+      "total_orders": 3,
+      "last_order_at": "2025-01-20T09:15:32.000Z"
     }
-  ]
+  }
 }
 ```
 

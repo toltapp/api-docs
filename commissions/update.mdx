@@ -44,7 +44,7 @@ description: "This endpoint updates a commission."
   Whether the request was successful
 </ResponseField>
 
-<ResponseField name="data" type="object">
+<ResponseField name="data" type="array[object]">
   <Expandable title="properties" defaultOpen={true}>
     <ResponseField name="id" type="string">
       Unique identifier for the commission
@@ -61,11 +61,20 @@ description: "This endpoint updates a commission."
     <ResponseField name="charge_id" type="string">
       Associated charge identifier
     </ResponseField>
+    <ResponseField name="charge_status" type="string">
+      Status of the related charge (e.g. "paid", "failed")
+    </ResponseField>
     <ResponseField name="source" type="string">
       Source of the commission
     </ResponseField>
     <ResponseField name="status" type="string">
       Commission status
+    </ResponseField>
+    <ResponseField name="type" type="string">
+      Type of commission (e.g. "reward", "referral")
+    </ResponseField>
+    <ResponseField name="currency" type="string | null">
+      Currency of the commission (ISO currency code) or null if not set
     </ResponseField>
     <ResponseField name="revenue" type="number">
       Revenue amount in cents
@@ -73,11 +82,29 @@ description: "This endpoint updates a commission."
     <ResponseField name="created_at" type="string">
       ISO 8601 timestamp of creation
     </ResponseField>
+    <ResponseField name="updated_at" type="string">
+      ISO 8601 timestamp of update
+    </ResponseField>
+    <ResponseField name="partner_id" type="string">
+      ID of the partner who earned the commission
+    </ResponseField>
     <ResponseField name="program_id" type="string">
       Program ID the commission belongs to
     </ResponseField>
     <ResponseField name="organization_id" type="string">
       Organization ID
+    </ResponseField>
+    <ResponseField name="payout_id" type="string | null">
+      ID of the payout if the commission has been paid, otherwise null
+    </ResponseField>
+    <ResponseField name="scheduled_approval_date" type="string | null">
+      Scheduled approval date if applicable, otherwise null
+    </ResponseField>
+    <ResponseField name="approval_type" type="string">
+      Approval type for the commission (e.g. "immediate", "manual")
+    </ResponseField>
+    <ResponseField name="flow_id" type="string">
+      ID of the flow that generated the commission
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -102,19 +129,30 @@ curl -X PUT 'https://api.tolt.com/v1/commissions/comm_eK9bzRGn46BhVgNFHD6fDgXW' 
 ```json Response
 {
   "success": true,
-  "data": {
-    "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
-    "amount": 2999,
-    "customer_id": "cust_dK9bzRGn46BhVgNFHD6fDgXW",
-    "transaction_id": "txn_7mbzRGn46BhVgNFHD6fDgXW",
-    "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
-    "source": "stripe",
-    "status": "approved",
-    "revenue": 14999,
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-  }
+  "data": [
+    {
+      "id": "comm_eK9bzRGn46BhVgNFHD6fDgXW",
+      "revenue": "14999",
+      "charge_id": "ch_9bzRGn46BhVgNFHD6fDgXW",
+      "charge_status": "paid",
+      "source": "manual",
+      "status": "approved",
+      "type": "reward",
+      "currency": null,
+      "partner_id": "part_JE3mfL9dfdffci7sFaJazAv2",
+      "organization_id": "org_JEsdfL9dfci7sFaJazAv2",
+      "program_id": "prg_YRdddbPDAKhWfdqhJbeh",
+      "transaction_id": "txn_7m46BhVkjkgNFHD6fDgXW",
+      "customer_id": "cust_d6BhVgNFHD6fDgkjkjXW",
+      "payout_id": null,
+      "created_at": "2025-04-25T09:36:10.858Z",
+      "updated_at": "2025-04-25T09:36:10.858Z",
+      "amount": "2999",
+      "scheduled_approval_date": null,
+      "approval_type": "immediate",
+      "flow_id": "flw_FX567GZjkn7RtaKbEuFatWw"
+    }
+  ]
 }
 ```
 

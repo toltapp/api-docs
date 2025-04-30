@@ -69,11 +69,17 @@ You can create a click using one of these two methods:
     <ResponseField name="country" type="string">
       Two-letter ISO country code
     </ResponseField>
+    <ResponseField name="state" type="string | null">
+      State
+    </ResponseField>
     <ResponseField name="device" type="string">
       Device type
     </ResponseField>
     <ResponseField name="page" type="string">
       Page URL
+    </ResponseField>
+    <ResponseField name="browser" type="string | null">
+      Browser name
     </ResponseField>
     <ResponseField name="referrer" type="string">
       Referrer URL
@@ -127,35 +133,46 @@ curl -X POST 'https://api.tolt.com/v1/clicks' \
 ```json Response - Method 1
 {
   "success": true,
-  "data": {
-    "id": "clk_dK9bzRGn46BhVgNFHD6fDgXW",
-    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-    "link_id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
-    "country": "US",
-    "device": "desktop",
-    "page": "https://example.com/product",
-    "referrer": "https://google.com",
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-  }
+  "data": [
+    {
+      "id": "clk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "page": "https://example.com/product",
+      "referrer": "https://google.com",
+      "device": "desktop",
+      "browser": null,
+      "country": "US",
+      "state": null,
+      "link_id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "created_at": "2025-04-25T11:22:35.546Z",
+      "updated_at": "2025-04-25T11:22:35.546Z"
+    }
+  ]
 }
 ```
 
 ```json Response - Method 2
 {
   "success": true,
-  "data": {
-    "id": "clk_eL7bzRGn46BhVgNFHD6fDgXW",
-    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-    "country": "US",
-    "device": "mobile",
-    "page": "https://example.com/product",
-    "referrer": "https://twitter.com",
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-  }
+  "data": [
+    {
+      "id": "clk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "page": "https://example.com/product",
+      "referrer": "https://google.com",
+      "device": "desktop",
+      "browser": null,
+      "country": "US",
+      "state": null,
+      "link_id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "created_at": "2025-04-25T11:22:35.546Z",
+      "updated_at": "2025-04-25T11:22:35.546Z"
+    }
+  ]
 }
 ```
 

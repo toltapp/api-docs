@@ -94,6 +94,15 @@ description: "This endpoint updates a partner."
     <ResponseField name="status" type="string">
       Partner's status
     </ResponseField>
+    <ResponseField name="completed_onboarding" type="boolean">
+      The partner has completed onboarding.
+    </ResponseField>
+    <ResponseField name="rejection_note" type="string | null">
+      A note why a partner was rejected.
+    </ResponseField>
+    <ResponseField name="internal_note" type="string | null">
+      A note related to the partner.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -134,7 +143,10 @@ curl -X PATCH 'https://api.tolt.com/v1/partners/part_s7mbzRGn46BhVgNFHD6fDgXW' \
     },
     "country_code": "US",
     "created_at": "2025-01-13T10:06:11.251Z",
-    "status": "active"
+    "status": "active",
+    "completed_onboarding": true,
+    "rejection_note": null,
+    "internal_note": null
   }
 }
 ```

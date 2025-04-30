@@ -21,7 +21,7 @@ description: "This endpoint retrieves a tracking link by its ID."
   Whether the request was successful
 </ResponseField>
 
-<ResponseField name="data" type="object">
+<ResponseField name="data" type="array[Object]">
   <Expandable title="properties" defaultOpen={true}>
     <ResponseField name="id" type="string">
       Unique identifier for the link
@@ -38,6 +38,9 @@ description: "This endpoint retrieves a tracking link by its ID."
     <ResponseField name="created_at" type="string">
       ISO 8601 timestamp of creation
     </ResponseField>
+    <ResponseField name="updated_at" type="string">
+      ISO 8601 timestamp of update
+    </ResponseField>
     <ResponseField name="program_id" type="string">
       Program ID the link belongs to
     </ResponseField>
@@ -48,7 +51,7 @@ description: "This endpoint retrieves a tracking link by its ID."
 </ResponseField>
 
 <RequestExample>
-
+//97b4e078-c614-483c-859b-9e447873a024
 ```bash cURL
 curl -X GET 'https://api.tolt.com/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW' \
 -H 'Authorization: Bearer <API_KEY>'
@@ -66,49 +69,55 @@ curl -X GET 'https://api.tolt.com/v1/links/lnk_dK9bzRGn46BhVgNFHD6fDgXW?expand[]
 ```json Response
 {
   "success": true,
-  "data": {
-    "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
-    "param": "ref",
-    "value": "michael_scott",
-    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
-  }
+  "data": [
+    {
+      "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "param": "ref",
+      "value": "michael_scott",
+      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "created_at": "2025-01-15T14:30:00.000Z",
+      "updated_at": "2025-01-15T14:30:00.000Z",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2"
+    }
+  ]
 }
 ```
 
 ```json Expand Response
 {
   "success": true,
-  "data": {
-    "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
-    "param": "ref",
-    "value": "michael_scott",
-    "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-    "created_at": "2025-01-15T14:30:00.000Z",
-    "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
-    "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
-    "partner": {
-      "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
-      "first_name": "Michael",
-      "last_name": "Scott",
-      "email": "michael.scott@dundermifflin.com",
-      "company_name": "Dunder Mifflin",
-      "status": "active",
-      "created_at": "2025-01-13T10:06:11.251Z"
-    },
-    "program": {
-      "id": "prg_YRsbPDAKhWfdqJbFACheh",
-      "status": "active",
-      "name": "Tolt's Partnership Program",
-      "product_name": "Tolt",
-      "subdomain": "affiliates",
-      "type": "public",
-      "currency_code": "USD",
-      "created_at": "2024-03-05T10:28:08.984+00:00"
+  "data": [
+    {
+      "id": "lnk_dK9bzRGn46BhVgNFHD6fDgXW",
+      "param": "ref",
+      "value": "michael_scott",
+      "partner_id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+      "created_at": "2025-01-15T14:30:00.000Z",
+      "updated_at": "2025-01-15T14:30:00.000Z",
+      "program_id": "prg_YRsbPDAKhWfdqJbFACheh",
+      "organization_id": "org_JE3mfYNL9ci7sFaJazAv2",
+      "partner": {
+        "id": "part_s7mbzRGn46BhVgNFHD6fDgXW",
+        "first_name": "Michael",
+        "last_name": "Scott",
+        "email": "michael.scott@dundermifflin.com",
+        "company_name": "Dunder Mifflin",
+        "status": "active",
+        "created_at": "2025-01-13T10:06:11.251Z"
+      },
+      "program": {
+        "id": "prg_YRsbPDAKhWfdqJbFACheh",
+        "status": "active",
+        "name": "Tolt's Partnership Program",
+        "product_name": "Tolt",
+        "subdomain": "affiliates",
+        "type": "public",
+        "currency_code": "USD",
+        "created_at": "2024-03-05T10:28:08.984+00:00"
+      }
     }
-  }
+  ]
 }
 ```
 

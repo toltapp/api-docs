@@ -91,6 +91,15 @@ description: "This endpoint creates a partner."
     <ResponseField name="created_at" type="string">
       ISO 8601 timestamp of creation
     </ResponseField>
+    <ResponseField name="completed_onboarding" type="boolean">
+      The partner has completed onboarding.
+    </ResponseField>
+    <ResponseField name="rejection_note" type="string | null">
+      A note why a partner was rejected.
+    </ResponseField>
+    <ResponseField name="internal_note" type="string | null">
+      A note related to the partner.
+    </ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -136,7 +145,10 @@ curl -X POST 'https://api.tolt.com/v1/partners' \
     },
     "country_code": "US",
     "created_at": "2025-01-13T10:06:11.251Z",
-    "status": "active"
+    "status": "active",
+    "completed_onboarding": true,
+    "rejection_note": null,
+    "internal_note": null
   }
 }
 ```
